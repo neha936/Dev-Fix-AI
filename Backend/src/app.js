@@ -26,6 +26,10 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
 }
 
+// Root-level status routes (no DB access)
+app.get('/', (req, res) => res.json({ success: true, message: 'DevFix AI Backend is active' }))
+app.get('/health', (req, res) => res.json({ success: true, status: 'healthy' }))
+
 // Mount API Routes
 app.use('/api', routes)
 
